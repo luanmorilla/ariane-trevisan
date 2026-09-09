@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ariane Trevisan | Biomédica Esteta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0908;
+    --bg-2:#0f0e0c;
+    --bg-3:#141210;
+    --gold:#c9a06a;
+    --gold-2:#e8cd9a;
+    --gold-dim:rgba(201,160,106,0.35);
+    --cream:#f2ece0;
+    --text:#e9e2d3;
+    --muted:#a89f8e;
+    --line:rgba(201,160,106,0.22);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  section[id]{scroll-margin-top:88px;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body.modal-open, body.mobile-menu-open{overflow:hidden;}
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;
+    color:var(--cream);
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  svg{display:block;}
+  button{font-family:inherit;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 40px;}
+  .eyebrow{
+    font-size:0.7rem;
+    letter-spacing:0.26em;
+    color:var(--gold);
+    font-weight:500;
+    text-transform:uppercase;
+  }
+  .section-head{max-width:640px;margin:0 auto 56px;text-align:center;}
+  .section-head .eyebrow{display:block;margin-bottom:14px;}
+  .section-head h2{font-size:2.3rem;line-height:1.2;font-weight:400;}
+  .section-head p{color:var(--muted);margin-top:16px;font-size:0.95rem;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(10,9,8,0.88);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    padding:16px 40px;max-width:1280px;margin:0 auto;gap:20px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand img{height:40px;width:auto;}
+  nav{justify-self:center;}
+  nav ul{display:flex;gap:26px;list-style:none;font-size:0.81rem;flex-wrap:wrap;justify-content:center;}
+  nav a{color:var(--text);opacity:0.82;transition:opacity .2s, color .2s;}
+  nav a:hover{opacity:1;color:var(--gold-2);}
+  .header-right{justify-self:end;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--gold);
+    color:var(--gold-2);
+    padding:11px 24px;border-radius:999px;
+    font-size:0.8rem;letter-spacing:0.02em;
+    transition:background .25s, color .25s, transform .2s;
+    white-space:nowrap;
+    background:none;cursor:pointer;
+  }
+  .btn:hover{background:var(--gold);color:#191309;}
+  .btn.solid{
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--gold-2);
+    background:linear-gradient(135deg, #b8873f 0%, #e8cd9a 45%, #c9a06a 70%, #8a6636 100%);
+    color:#241a0d;
+    font-weight:500;
+    letter-spacing:0.04em;
+    text-shadow:0 1px 0 rgba(255,255,255,0.25);
+    box-shadow:0 4px 14px rgba(201,160,106,0.35), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -2px 4px rgba(0,0,0,0.18);
+    animation:goldPulse 2.6s ease-in-out infinite;
+  }
+  .btn.solid::before{
+    content:"";
+    position:absolute;
+    top:0;left:-60%;
+    width:40%;height:100%;
+    background:linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+    transform:skewX(-20deg);
+    animation:goldShine 3.2s ease-in-out infinite;
+  }
+  .btn.solid:hover{
+    background:linear-gradient(135deg, #c9a06a 0%, #f2ddac 45%, #d9b57e 70%, #96703c 100%);
+    box-shadow:0 6px 20px rgba(232,205,154,0.55), inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -2px 4px rgba(0,0,0,0.18);
+    transform:translateY(-1px);
+  }
+  @keyframes goldPulse{
+    0%,100%{box-shadow:0 4px 14px rgba(201,160,106,0.35), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -2px 4px rgba(0,0,0,0.18);}
+    50%{box-shadow:0 4px 22px rgba(232,205,154,0.75), inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -2px 4px rgba(0,0,0,0.18);}
+  }
+  @keyframes goldShine{
+    0%{left:-60%;}
+    45%{left:120%;}
+    100%{left:120%;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn.solid, .btn.solid::before{animation:none;}
+  }
+  .btn svg{width:15px;height:15px;}
+  .menu-toggle{display:none;background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer;z-index:110;position:relative;}
+  .menu-toggle .icon-close{display:none;}
+  .menu-toggle.active .icon-open{display:none;}
+  .menu-toggle.active .icon-close{display:block;}
+
+  .mobile-nav{
+    display:none;
+    position:fixed;inset:0;z-index:99;
+    background:rgba(8,7,6,0.98);
+    backdrop-filter:blur(14px);
+    flex-direction:column;
+    align-items:center;justify-content:center;
+    gap:8px;
+    opacity:0;transition:opacity .25s ease;
+  }
+  .mobile-nav.active{display:flex;opacity:1;}
+  .mobile-nav ul{list-style:none;text-align:center;}
+  .mobile-nav li{margin:14px 0;}
+  .mobile-nav a{
+    font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--cream);
+    letter-spacing:0.02em;transition:color .2s;
+  }
+  .mobile-nav a:hover{color:var(--gold-2);}
+  .mobile-nav .btn{margin-top:26px;}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:64px 0 0;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:0.92fr 1.08fr;gap:0;align-items:stretch;min-height:640px;}
+  .hero-copy{display:flex;flex-direction:column;justify-content:center;padding:20px 40px 60px 40px;position:relative;z-index:2;}
+  .hero-copy .eyebrow{margin-bottom:20px;display:block;}
+  .hero-copy h1{font-size:3.75rem;line-height:1.04;margin-bottom:24px;font-weight:400;max-width:520px;}
+  .hero-copy h1 em{font-style:italic;color:var(--gold-2);font-weight:500;}
+  .hero-copy p{color:var(--muted);max-width:420px;margin-bottom:32px;font-size:0.98rem;}
+  .hero-features{display:flex;gap:34px;margin-top:46px;flex-wrap:wrap;}
+  .hf{display:flex;align-items:center;gap:11px;font-size:0.78rem;color:var(--muted);line-height:1.35;}
+  .hf svg{width:19px;height:19px;color:var(--gold);flex-shrink:0;}
+  .hero-photo-col{position:relative;min-height:640px;}
+  .hero-photo-frame{position:absolute;inset:0;overflow:hidden;}
+  .hero-photo-frame img{width:100%;height:100%;object-fit:cover;object-position:60% 30%;display:block;}
+  .hero-photo-frame::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg, var(--bg) 0%, rgba(10,9,8,0.55) 10%, rgba(10,9,8,0) 30%);z-index:1;}
+  .hero-photo-frame::after{content:"";position:absolute;left:0;right:0;bottom:0;height:35%;background:linear-gradient(0deg, var(--bg) 0%, rgba(10,9,8,0) 100%);z-index:1;}
+  .hero-side-text{position:absolute;right:34px;top:38%;writing-mode:vertical-rl;font-size:0.7rem;letter-spacing:0.32em;color:var(--gold-2);z-index:2;line-height:2.4;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:560px;}
+  .about-photo{position:relative;overflow:hidden;min-height:420px;}
+  .about-photo img{width:100%;height:100%;object-fit:cover;object-position:60% 35%;}
+  .about-copy{display:flex;flex-direction:column;justify-content:center;padding:60px 60px 60px 70px;}
+  .about-copy h2{font-size:2.6rem;line-height:1.16;margin:14px 0 22px;font-weight:400;}
+  .about-copy h2 .accent{color:var(--gold-2);}
+  .about-copy p{color:var(--muted);max-width:460px;margin-bottom:32px;font-size:0.96rem;}
+
+  /* ---------- DIFERENCIAIS ---------- */
+  .diferenciais{padding:100px 0;}
+  .dif-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .dif-card{background:var(--bg);padding:44px 28px;text-align:center;}
+  .dif-card .num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:var(--gold-2);font-weight:500;line-height:1;margin-bottom:14px;}
+  .dif-card p{font-size:0.82rem;color:var(--muted);letter-spacing:0.01em;}
+
+  /* ---------- PROCEDURES ---------- */
+  .procedures{padding:110px 0;}
+  .proc-grid{display:grid;grid-template-columns:0.82fr 1.18fr;gap:60px;align-items:center;}
+  .proc-copy h2{font-size:2.35rem;line-height:1.2;margin:14px 0 20px;font-weight:400;}
+  .proc-copy p{color:var(--muted);max-width:410px;margin-bottom:30px;font-size:0.95rem;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .card{border:1px solid var(--line);padding:38px 18px 30px;text-align:center;border-radius:3px;background:rgba(255,255,255,0.012);transition:border-color .25s, background .25s, transform .25s;cursor:pointer;}
+  .card:hover{border-color:var(--gold);background:rgba(201,160,106,0.05);transform:translateY(-3px);}
+  .card .ic{width:30px;height:30px;margin:0 auto 20px;color:var(--gold-2);}
+  .card p{font-size:0.83rem;color:var(--text);letter-spacing:0.01em;}
+
+  /* ---------- ANTES E DEPOIS ---------- */
+  .antes-depois{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:100px 0;}
+  .ad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .ad-card{border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+  .ad-split{display:grid;grid-template-columns:1fr 1fr;height:220px;position:relative;}
+  .ad-half{display:flex;align-items:center;justify-content:center;position:relative;}
+  .ad-half.antes{background:linear-gradient(150deg,#1b1712,#0c0b0a);}
+  .ad-half.depois{background:linear-gradient(150deg,#2a2015,#100d09);}
+  .ad-half span{font-size:0.68rem;letter-spacing:0.22em;color:var(--muted);text-transform:uppercase;}
+  .ad-half.depois span{color:var(--gold-2);}
+  .ad-divider{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--gold);opacity:.5;transform:translateX(-0.5px);}
+  .ad-caption{padding:18px 20px;font-size:0.82rem;color:var(--muted);border-top:1px solid var(--line);}
+  .ad-note{text-align:center;color:var(--muted);font-size:0.82rem;margin-top:34px;}
+
+  /* ---------- RESULTS ---------- */
+  .results{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .results-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:420px;}
+  .results-visual{position:relative;overflow:hidden;min-height:340px;}
+  .results-visual img{width:100%;height:100%;object-fit:cover;object-position:40% 40%;}
+  .results-copy{display:flex;flex-direction:column;justify-content:center;padding:50px 60px;}
+  .results-copy .eyebrow{margin-bottom:10px;}
+  .results-copy h2{font-size:2.1rem;margin-bottom:22px;line-height:1.22;font-weight:400;}
+  .quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:var(--gold-2);margin-bottom:16px;font-weight:500;}
+  .quote-body{color:var(--muted);max-width:420px;margin-bottom:26px;font-size:0.95rem;}
+  .reviewer-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+  .reviewer{display:flex;align-items:center;gap:14px;}
+  .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(140deg,#3a2f22,#151210);border:1px solid var(--line);}
+  .reviewer .name{color:var(--cream);font-size:0.88rem;}
+  .reviewer .role{color:var(--muted);font-size:0.76rem;}
+  .slider-ctrl{display:flex;align-items:center;gap:14px;}
+  .slider-ctrl button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--gold-2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s;}
+  .slider-ctrl button:hover{border-color:var(--gold);}
+  .dots{display:flex;gap:6px;}
+  .dots span{width:5px;height:5px;border-radius:50%;background:var(--muted);}
+  .dots span.active{background:var(--gold-2);}
+
+  /* ---------- FAQ ---------- */
+  .faq{padding:110px 0;}
+  .faq-list{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;
+    background:none;border:none;color:var(--cream);text-align:left;
+    padding:24px 4px;cursor:pointer;font-size:1.02rem;font-family:'Cormorant Garamond',serif;font-weight:500;
+  }
+  .faq-q .plus{color:var(--gold);font-size:1.3rem;flex-shrink:0;transition:transform .25s;line-height:1;}
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .faq-item.open .faq-a{max-height:220px;}
+  .faq-a p{color:var(--muted);font-size:0.92rem;padding:0 4px 24px;max-width:640px;}
+
+  /* ---------- LOCALIZACAO ---------- */
+  .localizacao{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:100px 0;}
+  .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .loc-map{
+    aspect-ratio:4/3;border:1px solid var(--line);border-radius:4px;
+    background:
+      radial-gradient(circle at 60% 40%, rgba(201,160,106,0.14), transparent 55%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 34px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 34px),
+      var(--bg);
+    display:flex;align-items:center;justify-content:center;position:relative;
+    transition:border-color .25s;
+  }
+  .loc-map:hover{border-color:var(--gold);}
+  .loc-map svg{width:38px;height:38px;color:var(--gold-2);}
+  .loc-info h2{font-size:2.1rem;margin:12px 0 24px;font-weight:400;}
+  .loc-row{display:flex;gap:16px;margin-bottom:22px;}
+  .loc-row svg{width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px;}
+  .loc-row .lbl{font-size:0.72rem;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;margin-bottom:4px;}
+  .loc-row .val{font-size:0.95rem;color:var(--text);}
+
+  /* ---------- AVALIACOES ---------- */
+  .avaliacoes{padding:80px 0 90px;text-align:center;}
+  .stars-row{
+    display:flex;justify-content:center;gap:10px;margin-bottom:20px;
+  }
+  .stars-row svg{
+    width:34px;height:34px;color:var(--gold-2);
+    filter:drop-shadow(0 0 6px rgba(201,160,106,0.35));
+    animation:starPulse 2.6s ease-in-out infinite;
+  }
+  .stars-row svg:nth-child(1){animation-delay:0s;}
+  .stars-row svg:nth-child(2){animation-delay:.15s;}
+  .stars-row svg:nth-child(3){animation-delay:.3s;}
+  .stars-row svg:nth-child(4){animation-delay:.45s;}
+  .stars-row svg:nth-child(5){animation-delay:.6s;}
+  @keyframes starPulse{
+    0%,100%{transform:scale(1);opacity:0.92;}
+    50%{transform:scale(1.16);opacity:1;filter:drop-shadow(0 0 12px rgba(232,205,154,0.65));}
+  }
+  .avaliacoes .rating-number{
+    font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--cream);font-weight:500;
+    margin-bottom:6px;
+  }
+  .avaliacoes .rating-count{font-size:0.82rem;color:var(--muted);letter-spacing:0.02em;}
+  @media (prefers-reduced-motion: reduce){
+    .stars-row svg{animation:none;}
+  }
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band-section{padding:90px 0;}
+  .cta-band{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;}
+  .cta-band .footer-brand{justify-self:start;}
+  .cta-center{text-align:center;}
+  .cta-center .eyebrow{display:block;margin-bottom:10px;}
+  .cta-center h2{font-size:2.1rem;line-height:1.2;font-weight:400;}
+  .cta-band .btn{justify-self:end;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:34px 0;}
+  .footer-line{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;}
+  .socials{display:flex;gap:14px;}
+  .socials a{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold-2);transition:border-color .2s,color .2s;}
+  .socials a:hover{border-color:var(--gold);color:var(--gold);}
+  .socials svg{width:16px;height:16px;}
+  .footer-center{font-size:0.78rem;color:var(--muted);text-align:center;}
+  .footer-right{font-size:0.78rem;color:var(--muted);}
+
+  /* ---------- MODAL ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(6,5,4,0.72);
+    backdrop-filter:blur(6px);
+    display:none;align-items:center;justify-content:center;
+    padding:24px;
+  }
+  .modal-overlay.active{display:flex;}
+  .modal-box{
+    width:100%;max-width:480px;
+    background:var(--bg-3);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:38px 34px 32px;
+    position:relative;
+    max-height:88vh;overflow-y:auto;
+    animation:modalIn .28s ease;
+  }
+  @keyframes modalIn{from{opacity:0;transform:translateY(14px) scale(.98);}to{opacity:1;transform:translateY(0) scale(1);}}
+  .modal-close{
+    position:absolute;top:18px;right:18px;
+    width:32px;height:32px;border-radius:50%;border:1px solid var(--line);
+    background:none;color:var(--muted);display:flex;align-items:center;justify-content:center;
+    cursor:pointer;font-size:1rem;transition:border-color .2s,color .2s;
+  }
+  .modal-close:hover{border-color:var(--gold);color:var(--gold-2);}
+  .modal-box .eyebrow{display:block;margin-bottom:8px;}
+  .modal-box h3{font-size:1.7rem;margin-bottom:22px;font-weight:400;}
+  .modal-horario-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--gold);color:var(--gold-2);
+    padding:7px 14px;border-radius:999px;font-size:0.78rem;
+    margin:-10px 0 22px;
+  }
+  .modal-field{margin-bottom:22px;}
+  .modal-field label{display:block;font-size:0.76rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .modal-field input[type="text"]{
+    width:100%;background:var(--bg-2);border:1px solid var(--line);border-radius:4px;
+    padding:13px 14px;color:var(--cream);font-family:'Jost',sans-serif;font-size:0.92rem;
+    transition:border-color .2s;
+  }
+  .modal-field input[type="text"]:focus{outline:none;border-color:var(--gold);}
+  .modal-field input::placeholder{color:#6b6459;}
+  .chip-grid{display:flex;flex-wrap:wrap;gap:10px;}
+  .chip{
+    border:1px solid var(--line);color:var(--text);
+    padding:10px 16px;border-radius:999px;font-size:0.8rem;cursor:pointer;
+    background:none;transition:border-color .2s,background .2s,color .2s;
+  }
+  .chip:hover{border-color:var(--gold);}
+  .chip.selected{background:var(--gold);border-color:var(--gold);color:#191309;}
+  .modal-other-field{display:none;margin-top:14px;}
+  .modal-other-field.show{display:block;}
+  .modal-submit{width:100%;justify-content:center;margin-top:6px;}
+  .modal-hint{font-size:0.76rem;color:#8f8676;margin-top:14px;text-align:center;}
+  .modal-error{font-size:0.78rem;color:#d98b6a;margin-top:-8px;margin-bottom:14px;display:none;}
+  .modal-error.show{display:block;}
+
+  @media(max-width:980px){
+    nav{display:none;}
+    .menu-toggle{display:block;}
+    .header-inner{grid-template-columns:auto auto;justify-content:space-between;}
+    .header-right .btn span{display:none;}
+    .hero-grid,.about-grid,.proc-grid,.results-grid,.loc-grid{grid-template-columns:1fr;}
+    .hero-photo-col{min-height:380px;order:-1;}
+    .hero-photo-frame::before{background:linear-gradient(180deg, var(--bg) 0%, rgba(10,9,8,0) 25%);}
+    .hero-copy{padding:36px 24px 40px;}
+    .hero-copy h1{font-size:2.6rem;}
+    .hero-side-text{display:none;}
+    .about-photo{min-height:340px;}
+    .about-copy{padding:44px 24px;}
+    .dif-grid{grid-template-columns:repeat(2,1fr);}
+    .proc-copy{padding:0 24px;}
+    .cards{grid-template-columns:repeat(2,1fr);padding:0 24px 40px;}
+    .ad-grid{grid-template-columns:1fr;padding:0 24px;}
+    .results-visual{min-height:280px;}
+    .results-copy{padding:40px 24px;}
+    .faq-list{padding:0 24px;}
+    .loc-map{margin:0 24px;}
+    .loc-info{padding:0 24px;}
+    .cta-band{grid-template-columns:1fr;text-align:center;gap:20px;}
+    .cta-band .footer-brand{justify-self:center;}
+    .cta-band .btn{justify-self:center;}
+    .footer-line{flex-direction:column;text-align:center;}
+    .wrap{padding:0 24px;}
+    .section-head{padding:0 24px;margin:0 auto 32px;}
+    .diferenciais{padding:56px 0;}
+    .dif-card{padding:32px 20px;}
+    .procedures{padding:60px 0;}
+    .cards{gap:12px;}
+    .card{padding:28px 14px 22px;}
+    .antes-depois{padding:60px 0;}
+    .ad-grid{gap:16px;}
+    .results-copy{gap:0;}
+    .faq{padding:60px 0;}
+    .localizacao{padding:60px 0;}
+    .avaliacoes{padding:56px 0 60px;}
+    .cta-band-section{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="#inicio">
+      <img src="assets/logo.png" alt="Ariane Trevisan">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#procedimentos">Procedimentos</a></li>
+        <li><a href="#resultados">Resultados</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="header-right">
+      <button class="btn js-open-modal">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.38a9.9 9.9 0 0 0 4.7 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.13a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.14.82.84-3.06-.2-.32a8.22 8.22 0 1 1 6.99 3.89Zm4.5-6.16c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.96-.14.16-.29.18-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.2.88 2.36 1 2.52.12.16 1.73 2.64 4.2 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28Z"/></svg>
+        <span>Agendar Avaliação</span>
+      </button>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      <svg class="icon-open" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="#inicio" class="js-mobile-link">Início</a></li>
+    <li><a href="#sobre" class="js-mobile-link">Sobre</a></li>
+    <li><a href="#procedimentos" class="js-mobile-link">Procedimentos</a></li>
+    <li><a href="#resultados" class="js-mobile-link">Resultados</a></li>
+    <li><a href="#depoimentos" class="js-mobile-link">Depoimentos</a></li>
+    <li><a href="#faq" class="js-mobile-link">FAQ</a></li>
+    <li><a href="#contato" class="js-mobile-link">Contato</a></li>
+  </ul>
+  <button class="btn solid js-open-modal js-mobile-link">Agendar Avaliação</button>
+</div>
+
+<section class="hero" id="inicio">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Beleza · Saúde · Autoconfiança</span>
+      <h1>Realce o que te faz<br><em>única</em></h1>
+      <p>Ariane Trevisan é Biomédica Esteta e une ciência, técnica e sensibilidade para realçar sua melhor versão, com resultados naturais, seguros e personalizados.</p>
+      <button class="btn solid js-open-modal">Agendar Avaliação</button>
+      <div class="hero-features">
+        <div class="hf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.6 3-6 7-6s7 2.4 7 6"/></svg>
+          Atendimento<br>Personalizado
+        </div>
+        <div class="hf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="6" r="1.6"/><circle cx="6" cy="14" r="1.6"/><circle cx="18" cy="14" r="1.6"/><circle cx="12" cy="20" r="1.6"/><path d="M12 7.6v3M7.2 13 10.6 15M16.8 13 13.4 15"/></svg>
+          Tecnologia<br>de Ponta
+        </div>
+        <div class="hf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/></svg>
+          Resultados<br>Naturais
+        </div>
+      </div>
+    </div>
+    <div class="hero-photo-col">
+      <div class="hero-photo-frame">
+        <img src="assets/hero.jpg" alt="Ariane Trevisan no ambiente da clínica">
+      </div>
+      <div class="hero-side-text">CIÊNCIA · ESTÉTICA · RESULTADOS</div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="about-grid">
+    <div class="about-photo">
+      <img src="assets/sobre.jpg" alt="Procedimento estético facial">
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow">Sobre mim</span>
+      <h2>Mais que estética,<br>é <span class="accent">sobre você.</span></h2>
+      <p>Sou Ariane Trevisan, Biomédica Esteta, e minha missão é valorizar sua beleza de forma natural, segura e individualizada. Acredito que o verdadeiro resultado está no equilíbrio entre ciência, técnica e cuidado em cada detalhe.</p>
+      <a class="btn" href="#procedimentos">Conheça mais sobre mim →</a>
+    </div>
+  </div>
+</section>
+
+<section class="diferenciais" id="diferenciais">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Diferenciais</span>
+      <h2>Por que escolher a Ariane Trevisan</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="dif-grid">
+      <div class="dif-card">
+        <div class="num">+5</div>
+        <p>Anos de experiência em estética avançada</p>
+      </div>
+      <div class="dif-card">
+        <div class="num">+800</div>
+        <p>Pacientes atendidas com resultados naturais</p>
+      </div>
+      <div class="dif-card">
+        <div class="num">100%</div>
+        <p>Atendimento individualizado e humanizado</p>
+      </div>
+      <div class="dif-card">
+        <div class="num">A+</div>
+        <p>Produtos e protocolos certificados</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="procedures" id="procedimentos">
+  <div class="wrap proc-grid">
+    <div class="proc-copy">
+      <span class="eyebrow">Procedimentos</span>
+      <h2>Tratamentos que realçam sua melhor versão.</h2>
+      <p>Utilizo as melhores técnicas e tecnologias para oferecer resultados naturais, seguros e personalizados para cada necessidade. Aqui, cada detalhe importa.</p>
+      <button class="btn js-open-modal">Ver todos os procedimentos →</button>
+    </div>
+    <div class="cards">
+      <div class="card js-open-modal" data-service="Toxina Botulínica">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="10" r="7"/><path d="M9 10c0 1.5 1 2.5 3 2.5s3-1 3-2.5M9 8.5h.01M15 8.5h.01M8 17c0 2 1.8 4 4 4s4-2 4-4"/></svg>
+        <p>Toxina Botulínica</p>
+      </div>
+      <div class="card js-open-modal" data-service="Preenchimento Facial">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 11c2-3 5-4 8-4s6 1 8 4c-2 3-5 4-8 4s-6-1-8-4Z"/><path d="M12 11h.01"/></svg>
+        <p>Preenchimento Facial</p>
+      </div>
+      <div class="card js-open-modal" data-service="Bioestimuladores">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="5" r="1.6"/><circle cx="5" cy="14" r="1.6"/><circle cx="19" cy="14" r="1.6"/><circle cx="12" cy="20" r="1.6"/><path d="M12 6.6 6 13M12 6.6 18 13M6.7 15.3 11 18.6M17.3 15.3 13 18.6"/></svg>
+        <p>Bioestimuladores</p>
+      </div>
+      <div class="card js-open-modal" data-service="Skinbooster">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11Z"/></svg>
+        <p>Skinbooster</p>
+      </div>
+      <div class="card js-open-modal" data-service="Harmonização Facial">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="9" r="4"/><path d="M6 21c0-3.5 2.7-6 6-6s6 2.5 6 6"/></svg>
+        <p>Harmonização Facial</p>
+      </div>
+      <div class="card js-open-modal" data-service="Tratamentos para Manchas e Acne">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6.5 6.5l2 2M15.5 15.5l2 2M6.5 17.5l2-2M15.5 8.5l2-2"/><circle cx="12" cy="12" r="2.2"/></svg>
+        <p>Tratamentos para<br>Manchas e Acne</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="antes-depois" id="antes-depois">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Transformações</span>
+      <h2>Antes &amp; Depois</h2>
+      <p>Uma amostra de resultados reais, sempre respeitando a naturalidade de cada rosto.</p>
+    </div>
+    <div class="ad-grid">
+      <div class="ad-card">
+        <div class="ad-split">
+          <div class="ad-half antes"><span>Antes</span></div>
+          <div class="ad-half depois"><span>Depois</span></div>
+          <div class="ad-divider"></div>
+        </div>
+        <div class="ad-caption">Harmonização facial · resultado em 30 dias</div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-split">
+          <div class="ad-half antes"><span>Antes</span></div>
+          <div class="ad-half depois"><span>Depois</span></div>
+          <div class="ad-divider"></div>
+        </div>
+        <div class="ad-caption">Preenchimento labial · resultado imediato</div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-split">
+          <div class="ad-half antes"><span>Antes</span></div>
+          <div class="ad-half depois"><span>Depois</span></div>
+          <div class="ad-divider"></div>
+        </div>
+        <div class="ad-caption">Skinbooster · resultado em 3 sessões</div>
+      </div>
+    </div>
+    <p class="ad-note">Espaço reservado para fotos reais de antes e depois — substitua pelos registros com autorização das pacientes.</p>
+  </div>
+</section>
+
+<section class="results" id="resultados">
+  <div class="results-grid">
+    <div class="results-visual">
+      <img src="assets/resultados.jpg" alt="Procedimento com seringa">
+    </div>
+    <div class="results-copy" id="depoimentos">
+      <span class="eyebrow">Resultados reais</span>
+      <h2>Beleza com naturalidade.</h2>
+      <a class="btn" href="#antes-depois" style="align-self:flex-start;margin-bottom:40px;">Ver resultados →</a>
+      <p class="quote">"A Ariane é simplesmente incrível."</p>
+      <p class="quote-body">Profissional atenciosa, explica tudo com muita clareza e o resultado foi além do que eu esperava. Me senti ainda mais confiante e bonita!</p>
+      <div class="reviewer-row">
+        <div class="reviewer">
+          <div class="avatar"></div>
+          <div>
+            <div class="name">Juliana S.</div>
+            <div class="role">Cliente</div>
+          </div>
+        </div>
+        <div class="slider-ctrl">
+          <button aria-label="Anterior">‹</button>
+          <div class="dots"><span class="active"></span><span></span><span></span></div>
+          <button aria-label="Próximo">›</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Dúvidas frequentes</span>
+      <h2>Perguntas Frequentes</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q"><span>Preciso de uma avaliação antes do procedimento?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Sim. Toda paciente passa por uma avaliação individual, onde analisamos a anatomia, objetivos e histórico de saúde antes de indicar o protocolo mais adequado.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Os resultados são naturais?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Sim, o trabalho é guiado por técnicas que respeitam a harmonia facial de cada paciente, sem exageros — o objetivo é realçar, não transformar.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Quanto tempo dura o efeito dos procedimentos?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Varia conforme o procedimento e o metabolismo de cada paciente. Isso é explicado em detalhes durante a avaliação, com um plano de manutenção personalizado.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Os produtos utilizados são certificados?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Sim, todos os produtos e protocolos utilizados possuem registro e procedência garantida, priorizando sempre a segurança da paciente.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Como faço para agendar minha avaliação?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Basta clicar em "Agendar Avaliação", informar seu nome e o serviço de interesse — você será direcionada automaticamente para o WhatsApp.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="localizacao" id="localizacao">
+  <div class="wrap loc-grid">
+    <a class="loc-map" href="https://share.google/Dh3NnK2aKZXCZFMXH" target="_blank" rel="noopener" aria-label="Ver no Google Maps">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
+    </a>
+    <div class="loc-info">
+      <span class="eyebrow">Onde estamos</span>
+      <h2>Venha nos visitar.</h2>
+      <div class="loc-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        <div><div class="lbl">Endereço</div><div class="val">R. Nigéria — Jardim Adriane<br>Itaquaquecetuba - SP, 08598-730</div></div>
+      </div>
+      <div class="loc-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <div><div class="lbl">Horário de atendimento</div><div class="val">Terça a sábado · 8h às 20h<br>Domingo e segunda · Fechado</div></div>
+      </div>
+      <div class="loc-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 4h16v12H8l-4 4V4Z"/></svg>
+        <div><div class="lbl">Fale conosco</div><div class="val">(11) 94662-8176</div></div>
+      </div>
+      <button class="btn solid js-open-modal" style="margin-top:10px;">Agendar Avaliação</button>
+    </div>
+  </div>
+</section>
+
+<section class="avaliacoes" id="avaliacoes">
+  <div class="wrap">
+    <span class="eyebrow">Avaliação das pacientes</span>
+    <div class="stars-row" style="margin-top:16px;">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.7-4.9 4.5 1.3 6.6L12 17l-5.9 3.4 1.3-6.6-4.9-4.5 6.6-.7L12 2.5Z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.7-4.9 4.5 1.3 6.6L12 17l-5.9 3.4 1.3-6.6-4.9-4.5 6.6-.7L12 2.5Z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.7-4.9 4.5 1.3 6.6L12 17l-5.9 3.4 1.3-6.6-4.9-4.5 6.6-.7L12 2.5Z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.7-4.9 4.5 1.3 6.6L12 17l-5.9 3.4 1.3-6.6-4.9-4.5 6.6-.7L12 2.5Z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.7-4.9 4.5 1.3 6.6L12 17l-5.9 3.4 1.3-6.6-4.9-4.5 6.6-.7L12 2.5Z"/></svg>
+    </div>
+    <div class="rating-number">5,0 de 5</div>
+    <div class="rating-count">13 avaliações no Google · Estética Avançada Dra. Ariane Trevisan</div>
+  </div>
+</section>
+
+<section class="cta-band-section" id="contato">
+  <div class="wrap cta-band">
+    <div class="footer-brand">
+      <img src="assets/logo.png" alt="Ariane Trevisan" style="height:52px;">
+    </div>
+    <div class="cta-center">
+      <span class="eyebrow">Vamos conversar?</span>
+      <h2>Seu bem-estar<br>também é beleza.</h2>
+    </div>
+    <button class="btn solid js-open-modal">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.38a9.9 9.9 0 0 0 4.7 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Z"/></svg>
+      Agendar Avaliação
+    </button>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-line">
+    <div class="socials">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg></a>
+      <a href="https://wa.me/5511946628176" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.38a9.9 9.9 0 0 0 4.7 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Z"/></svg></a>
+      <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3c.4 2.2 1.8 3.6 4 3.9v2.6c-1.4 0-2.7-.4-4-1.2v6.1a5.4 5.4 0 1 1-4.6-5.3v2.7a2.7 2.7 0 1 0 2 2.6V3h2.6Z"/></svg></a>
+    </div>
+    <div class="footer-center">Ariane Trevisan &nbsp;|&nbsp; Biomédica Esteta &nbsp;|&nbsp; CRBM 7 - 0000</div>
+    <div class="footer-right">Cuidar de você é a nossa especialidade.</div>
+  </div>
+</footer>
+
+<!-- ---------- MODAL DE AGENDAMENTO ---------- -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
+    <span class="eyebrow">Agendar avaliação</span>
+    <h3 id="modalTitle">Vamos conversar?</h3>
+    <div class="modal-horario-tag" id="modalHorarioTag" style="display:none;"></div>
+
+    <div class="modal-field">
+      <label for="modalNome">Seu nome</label>
+      <input type="text" id="modalNome" placeholder="Digite seu nome completo">
+    </div>
+
+    <div class="modal-field">
+      <label>Qual serviço você tem interesse?</label>
+      <div class="chip-grid" id="chipGrid">
+        <button type="button" class="chip" data-value="Toxina Botulínica">Toxina Botulínica</button>
+        <button type="button" class="chip" data-value="Preenchimento Facial">Preenchimento Facial</button>
+        <button type="button" class="chip" data-value="Bioestimuladores">Bioestimuladores</button>
+        <button type="button" class="chip" data-value="Skinbooster">Skinbooster</button>
+        <button type="button" class="chip" data-value="Harmonização Facial">Harmonização Facial</button>
+        <button type="button" class="chip" data-value="Tratamentos para Manchas e Acne">Manchas e Acne</button>
+        <button type="button" class="chip" data-value="Avaliação Geral">Avaliação Geral</button>
+        <button type="button" class="chip" data-value="Outro">Outro</button>
+      </div>
+      <div class="modal-other-field" id="otherField">
+        <input type="text" id="modalOutro" placeholder="Descreva o que você está buscando">
+      </div>
+    </div>
+
+    <div class="modal-error" id="modalError">Preencha seu nome e selecione um serviço para continuar.</div>
+
+    <button class="btn solid modal-submit" id="modalSubmit">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.38a9.9 9.9 0 0 0 4.7 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Z"/></svg>
+      Continuar para o WhatsApp
+    </button>
+    <p class="modal-hint">Você será direcionada ao WhatsApp com sua mensagem já preenchida.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var WHATSAPP_NUMBER = "5511946628176";
+
+  var overlay = document.getElementById('modalOverlay');
+  var closeBtn = document.getElementById('modalClose');
+  var openTriggers = document.querySelectorAll('.js-open-modal');
+  var chipGrid = document.getElementById('chipGrid');
+  var chips = chipGrid.querySelectorAll('.chip');
+  var otherField = document.getElementById('otherField');
+  var outroInput = document.getElementById('modalOutro');
+  var nomeInput = document.getElementById('modalNome');
+  var submitBtn = document.getElementById('modalSubmit');
+  var errorEl = document.getElementById('modalError');
+  var horarioTag = document.getElementById('modalHorarioTag');
+  var selectedService = null;
+
+  function openModal(presetService){
+    overlay.classList.add('active');
+    document.body.classList.add('modal-open');
+    errorEl.classList.remove('show');
+    if(presetService){
+      selectService(presetService);
+    }
+    if(window.selectedHorario){
+      horarioTag.textContent = 'Horário desejado: ' + window.selectedHorario;
+      horarioTag.style.display = 'inline-flex';
+    } else {
+      horarioTag.style.display = 'none';
+    }
+    setTimeout(function(){ nomeInput.focus(); }, 150);
+  }
+
+  function closeModal(){
+    overlay.classList.remove('active');
+    document.body.classList.remove('modal-open');
+  }
+
+  function selectService(value){
+    selectedService = value;
+    chips.forEach(function(c){
+      c.classList.toggle('selected', c.getAttribute('data-value') === value);
+    });
+    if(value === 'Outro'){
+      otherField.classList.add('show');
+      setTimeout(function(){ outroInput.focus(); }, 100);
+    } else {
+      otherField.classList.remove('show');
+    }
+    errorEl.classList.remove('show');
+  }
+
+  openTriggers.forEach(function(el){
+    el.addEventListener('click', function(){
+      var service = el.getAttribute('data-service');
+      openModal(service || null);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
+  });
+
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      selectService(chip.getAttribute('data-value'));
+    });
+  });
+
+  submitBtn.addEventListener('click', function(){
+    var nome = nomeInput.value.trim();
+    var outroTexto = outroInput.value.trim();
+
+    if(!nome || !selectedService || (selectedService === 'Outro' && !outroTexto)){
+      errorEl.classList.add('show');
+      return;
+    }
+
+    var servicoFinal = selectedService === 'Outro' ? outroTexto : selectedService;
+    var mensagem = 'Olá, meu nome é ' + nome + '. Tenho interesse em: ' + servicoFinal + '.';
+    mensagem += ' Gostaria de agendar uma avaliação.';
+    var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(mensagem);
+
+    window.open(url, '_blank');
+    closeModal();
+  });
+
+  // Mobile menu
+  var menuToggle = document.getElementById('menuToggle');
+  var mobileNav = document.getElementById('mobileNav');
+  var mobileLinks = mobileNav.querySelectorAll('.js-mobile-link');
+
+  function closeMobileMenu(){
+    menuToggle.classList.remove('active');
+    mobileNav.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded','false');
+    document.body.classList.remove('mobile-menu-open');
+  }
+  function toggleMobileMenu(){
+    var isActive = mobileNav.classList.toggle('active');
+    menuToggle.classList.toggle('active', isActive);
+    menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+    document.body.classList.toggle('mobile-menu-open', isActive);
+  }
+  menuToggle.addEventListener('click', toggleMobileMenu);
+  mobileLinks.forEach(function(link){
+    link.addEventListener('click', function(){
+      closeMobileMenu();
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && mobileNav.classList.contains('active')) closeMobileMenu();
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Rolagem suave para todos os links internos (#âncoras)
+  var HEADER_OFFSET = 88;
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    var targetId = link.getAttribute('href').slice(1);
+    if(!targetId) return;
+    link.addEventListener('click', function(e){
+      var target = document.getElementById(targetId);
+      if(!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.pageYOffset - HEADER_OFFSET;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
