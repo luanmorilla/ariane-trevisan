@@ -371,6 +371,44 @@
   .modal-error{font-size:0.78rem;color:#d98b6a;margin-top:-8px;margin-bottom:14px;display:none;}
   .modal-error.show{display:block;}
 
+  /* ---------- PARALLAX ---------- */
+  .hero-photo-frame img,
+  .about-photo img,
+  .results-visual img{
+    transform:translateZ(0) scale(1.08);
+    transform-origin:center;
+    will-change:transform;
+    backface-visibility:hidden;
+  }
+  .parallax-layer{
+    will-change:transform;
+    backface-visibility:hidden;
+  }
+  .hero::before,
+  .procedures::before,
+  .faq::before{
+    content:"";
+    position:absolute;
+    width:340px;height:340px;
+    border-radius:50%;
+    border:1px solid rgba(201,160,106,0.08);
+    box-shadow:0 0 90px rgba(201,160,106,0.04);
+    pointer-events:none;
+  }
+  .hero::before{left:-190px;top:120px;}
+  .procedures,.faq{position:relative;overflow:hidden;}
+  .procedures::before{right:-210px;top:90px;}
+  .faq::before{left:-230px;bottom:20px;}
+  @media (prefers-reduced-motion: reduce){
+    .parallax-layer,
+    .hero-photo-frame img,
+    .about-photo img,
+    .results-visual img{
+      transform:none !important;
+      will-change:auto;
+    }
+  }
+
   @media(max-width:980px){
     nav{display:none;}
     .menu-toggle{display:block;}
@@ -901,6 +939,77 @@
       if(!isOpen) item.classList.add('open');
     });
   });
+
+  // Parallax suave em camadas, otimizado com requestAnimationFrame
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var parallaxConfig = [
+    ['.hero-photo-frame img', 0.16, 1.08],
+    ['.hero-copy', 0.055, 1],
+    ['.about-photo img', 0.13, 1.08],
+    ['.about-copy', 0.045, 1],
+    ['.proc-copy', 0.04, 1],
+    ['.cards', 0.065, 1],
+    ['.antes-depois .section-head', 0.035, 1],
+    ['.results-visual img', 0.13, 1.08],
+    ['.results-copy', 0.045, 1],
+    ['.faq .section-head', 0.035, 1],
+    ['.loc-map', 0.055, 1],
+    ['.loc-info', 0.035, 1],
+    ['.cta-center', 0.04, 1]
+  ];
+  var parallaxItems = [];
+  var parallaxTicking = false;
+
+  parallaxConfig.forEach(function(config){
+    document.querySelectorAll(config[0]).forEach(function(element){
+      element.classList.add('parallax-layer');
+      parallaxItems.push({
+        element: element,
+        speed: config[1],
+        scale: config[2],
+        center: 0
+      });
+    });
+  });
+
+  function measureParallax(){
+    parallaxItems.forEach(function(item){
+      item.element.style.transform = '';
+      var rect = item.element.getBoundingClientRect();
+      item.center = rect.top + window.pageYOffset + (rect.height / 2);
+    });
+    updateParallax();
+  }
+
+  function updateParallax(){
+    if(reduceMotion.matches){
+      parallaxItems.forEach(function(item){ item.element.style.transform = ''; });
+      parallaxTicking = false;
+      return;
+    }
+
+    var viewportCenter = window.pageYOffset + (window.innerHeight / 2);
+    parallaxItems.forEach(function(item){
+      var offset = (viewportCenter - item.center) * item.speed;
+      offset = Math.max(-64, Math.min(64, offset));
+      item.element.style.transform = 'translate3d(0,' + offset.toFixed(2) + 'px,0) scale(' + item.scale + ')';
+    });
+    parallaxTicking = false;
+  }
+
+  function requestParallaxUpdate(){
+    if(!parallaxTicking){
+      parallaxTicking = true;
+      window.requestAnimationFrame(updateParallax);
+    }
+  }
+
+  window.addEventListener('scroll', requestParallaxUpdate, { passive:true });
+  window.addEventListener('resize', function(){
+    window.requestAnimationFrame(measureParallax);
+  });
+  window.addEventListener('load', measureParallax);
+  measureParallax();
 
   // Rolagem suave para todos os links internos (#âncoras)
   var HEADER_OFFSET = 88;
