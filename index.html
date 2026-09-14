@@ -678,9 +678,192 @@
   @media(prefers-reduced-motion:reduce){
     .hero-copy>.eyebrow,.hero-copy h1,.hero-copy>p,.hero-copy>.btn,.hero-features{animation:none;}
   }
+  /* ---------- SIGNATURE EDITORIAL EXPERIENCE ---------- */
+  :root{
+    --rose:#a96f68;
+    --rose-soft:#d7aaa0;
+    --champagne:#f6dfb6;
+    --ink:#08080a;
+    --scroll-progress:0%;
+  }
+  html{scrollbar-color:var(--gold) #111;scrollbar-width:thin;}
+  body{
+    background:
+      radial-gradient(circle at 12% 4%,rgba(169,111,104,.13),transparent 28rem),
+      radial-gradient(circle at 86% 26%,rgba(201,165,108,.09),transparent 32rem),
+      radial-gradient(circle at 45% 76%,rgba(169,111,104,.06),transparent 38rem),
+      var(--ink);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.23;
+    background-image:radial-gradient(rgba(255,255,255,.18) .55px,transparent .55px);
+    background-size:7px 7px;
+  }
+  .cursor-aura{
+    position:fixed;left:0;top:0;width:420px;height:420px;border-radius:50%;z-index:0;pointer-events:none;
+    background:radial-gradient(circle,rgba(215,170,160,.075),rgba(201,165,108,.025) 42%,transparent 70%);
+    transform:translate3d(-50%,-50%,0);transition:opacity .3s;mix-blend-mode:screen;
+  }
+  header::after{
+    content:"";position:absolute;left:0;bottom:-1px;width:var(--scroll-progress);height:1px;
+    background:linear-gradient(90deg,var(--rose-soft),var(--champagne));box-shadow:0 0 14px rgba(240,214,166,.6);
+  }
+  nav a.active{color:var(--gold-2);opacity:1;}
+  nav a.active::after{right:0;}
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;}
+  .eyebrow::before{content:"";width:28px;height:1px;background:linear-gradient(90deg,var(--rose-soft),var(--gold-2));}
+  .section-head .eyebrow{justify-content:center;}
+  .section-head h2,
+  .about-copy h2,
+  .proc-copy h2,
+  .results-copy h2,
+  .loc-info h2{
+    text-wrap:balance;
+    background:linear-gradient(125deg,#fffaf1 12%,#e8d6ba 58%,#ba8b62 115%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
+  .hero-grid{position:relative;border-left:1px solid rgba(240,214,166,.08);border-right:1px solid rgba(240,214,166,.08);}
+  .hero-copy{overflow:hidden;}
+  .hero-copy::before{
+    content:"AT";position:absolute;left:-.06em;bottom:-.2em;z-index:-1;
+    font:500 18rem/.8 'Cormorant Garamond',serif;color:rgba(240,214,166,.025);letter-spacing:-.12em;
+  }
+  .hero-copy h1 em{position:relative;display:inline-block;}
+  .hero-copy h1 em::after{
+    content:"";position:absolute;left:2%;right:-8%;bottom:-8px;height:13px;
+    border-top:1px solid rgba(240,214,166,.65);border-radius:50%;transform:rotate(-2deg);
+  }
+  .hero-photo-frame{isolation:isolate;}
+  .hero-photo-frame::after{
+    height:100%;background:linear-gradient(180deg,transparent 42%,rgba(9,9,10,.72) 100%),linear-gradient(120deg,rgba(169,111,104,.12),transparent 45%);
+  }
+  .hero-photo-frame img{transition:filter .6s ease;}
+  .hero-photo-col:hover .hero-photo-frame img{filter:saturate(.9) contrast(1.06);}
+  .hero-proof{
+    position:absolute;left:44px;bottom:54px;z-index:3;width:190px;padding:18px 20px;
+    border:1px solid rgba(240,214,166,.28);border-radius:18px;
+    background:linear-gradient(145deg,rgba(20,18,19,.78),rgba(9,9,10,.52));
+    backdrop-filter:blur(18px) saturate(130%);box-shadow:0 22px 60px rgba(0,0,0,.38);
+  }
+  .hero-proof::before{content:"";position:absolute;inset:5px;border:1px solid rgba(255,255,255,.035);border-radius:13px;pointer-events:none;}
+  .hero-proof strong{display:block;font:500 2rem/1 'Cormorant Garamond',serif;color:var(--champagne);}
+  .hero-proof span{display:block;margin-top:7px;color:#c8c0b5;font-size:.66rem;line-height:1.45;letter-spacing:.09em;text-transform:uppercase;}
+  .hero-signature{position:absolute;right:46px;bottom:46px;z-index:3;text-align:right;color:rgba(255,250,241,.88);font:italic 1.45rem/1 'Cormorant Garamond',serif;}
+  .hero-signature small{display:block;margin-top:7px;font:500 .52rem/1 'Jost',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-2);}
+
+  .prestige-strip{position:relative;z-index:4;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(14,13,15,.82);backdrop-filter:blur(18px);}
+  .prestige-inner{max-width:1440px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);}
+  .prestige-item{min-height:92px;padding:22px 28px;display:flex;align-items:center;justify-content:center;gap:14px;text-align:left;}
+  .prestige-item+.prestige-item{border-left:1px solid var(--line);}
+  .prestige-icon{width:34px;height:34px;flex:0 0 34px;border:1px solid rgba(240,214,166,.28);border-radius:50%;display:grid;place-items:center;color:var(--gold-2);font:500 .72rem/1 'Cormorant Garamond',serif;}
+  .prestige-item strong{display:block;color:var(--cream);font:500 .88rem/1.2 'Cormorant Garamond',serif;letter-spacing:.02em;}
+  .prestige-item span{display:block;margin-top:4px;color:var(--muted);font-size:.61rem;letter-spacing:.08em;text-transform:uppercase;}
+
+  .about-photo::before,.results-visual::before{
+    content:"";position:absolute;z-index:2;inset:18px;border:1px solid rgba(255,255,255,.12);border-radius:inherit;pointer-events:none;
+  }
+  .about-copy{position:relative;}
+  .about-copy::after{
+    content:"Estética que respeita a sua identidade";position:absolute;right:25px;bottom:34px;
+    writing-mode:vertical-rl;color:rgba(240,214,166,.19);font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;
+  }
+
+  .dif-grid{counter-reset:diferencial;}
+  .dif-card{counter-increment:diferencial;text-align:left;min-height:250px;display:flex;flex-direction:column;justify-content:flex-end;}
+  .dif-card::after{content:"0" counter(diferencial);position:absolute;right:22px;top:18px;color:rgba(240,214,166,.18);font:500 2.2rem/1 'Cormorant Garamond',serif;}
+  .dif-card .num{background:linear-gradient(120deg,var(--champagne),#a77a45);-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+  .cards{counter-reset:procedure;}
+  .card{counter-increment:procedure;text-align:left;align-items:flex-start;overflow:hidden;isolation:isolate;}
+  .card::before{content:"0" counter(procedure);position:absolute;right:20px;bottom:10px;z-index:-1;color:rgba(240,214,166,.055);font:500 5.5rem/1 'Cormorant Garamond',serif;}
+  .card:nth-child(1),.card:nth-child(4),.card:nth-child(5){background:linear-gradient(145deg,rgba(169,111,104,.09),rgba(255,255,255,.014));}
+  .card .ic{margin-left:0;filter:drop-shadow(0 8px 14px rgba(201,165,108,.18));}
+
+  .ad-card{position:relative;}
+  .ad-half{overflow:hidden;}
+  .ad-half::before{content:"";position:absolute;width:92px;height:128px;border:1px solid rgba(240,214,166,.12);border-radius:48% 48% 44% 44%;transform:translateY(15px);}
+  .ad-half::after{content:"";position:absolute;width:44px;height:68px;border-left:1px solid rgba(240,214,166,.08);border-right:1px solid rgba(240,214,166,.08);border-radius:50%;transform:translateY(21px);}
+  .ad-half span{position:relative;z-index:2;}
+  .ad-card::after{content:"RESULTADO";position:absolute;right:16px;top:16px;font-size:.5rem;letter-spacing:.22em;color:rgba(255,255,255,.55);}
+
+  .results-copy{position:relative;}
+  .results-copy::after{content:"05";position:absolute;right:8%;top:7%;color:rgba(240,214,166,.055);font:500 8rem/1 'Cormorant Garamond',serif;}
+  .reviewer-row{padding-top:24px;border-top:1px solid var(--line);}
+
+  .experience{position:relative;padding:130px 0;overflow:hidden;background:radial-gradient(circle at 12% 50%,rgba(169,111,104,.1),transparent 33rem);}
+  .experience::before{content:"EXPERIÊNCIA";position:absolute;left:50%;top:25px;transform:translateX(-50%);font:500 clamp(5rem,13vw,13rem)/1 'Cormorant Garamond',serif;color:rgba(240,214,166,.025);white-space:nowrap;letter-spacing:.04em;}
+  .experience-grid{position:relative;display:grid;grid-template-columns:.8fr 1.2fr;gap:100px;align-items:end;}
+  .experience-intro h2{font-size:clamp(3.2rem,5vw,5.4rem);line-height:.95;letter-spacing:-.04em;margin:20px 0 28px;}
+  .experience-intro h2 em{font-weight:400;color:var(--rose-soft);}
+  .experience-intro p{color:var(--muted);max-width:440px;line-height:1.9;}
+  .journey{display:grid;gap:0;}
+  .journey-step{position:relative;display:grid;grid-template-columns:70px 1fr;gap:24px;padding:30px 0;border-top:1px solid var(--line);}
+  .journey-step:last-child{border-bottom:1px solid var(--line);}
+  .journey-number{width:52px;height:52px;border:1px solid rgba(240,214,166,.3);border-radius:50%;display:grid;place-items:center;color:var(--champagne);font:500 1.25rem/1 'Cormorant Garamond',serif;transition:.3s;}
+  .journey-step:hover .journey-number{background:var(--champagne);color:#17110a;box-shadow:0 0 34px rgba(240,214,166,.2);}
+  .journey-step h3{font-size:1.55rem;margin-bottom:6px;}
+  .journey-step p{color:var(--muted);font-size:.86rem;line-height:1.7;}
+
+  .faq-item{position:relative;}
+  .faq-item::before{content:"";position:absolute;left:0;top:18%;bottom:18%;width:2px;background:linear-gradient(var(--rose-soft),var(--gold-2));opacity:0;transition:.25s;}
+  .faq-item.open::before{opacity:1;}
+  .loc-map{overflow:hidden;}
+  .loc-map::after{content:"";position:absolute;width:180px;height:180px;border:1px solid rgba(240,214,166,.12);border-radius:50%;animation:mapPulse 3s ease-out infinite;}
+  @keyframes mapPulse{0%{transform:scale(.3);opacity:.8}100%{transform:scale(1.8);opacity:0}}
+
+  .cta-band{isolation:isolate;}
+  .cta-band::before{content:"AT";position:absolute;left:50%;top:50%;z-index:-1;transform:translate(-50%,-50%);font:500 11rem/1 'Cormorant Garamond',serif;color:rgba(240,214,166,.035);letter-spacing:-.1em;}
+  .floating-wa{
+    position:fixed;right:24px;bottom:24px;z-index:90;width:58px;height:58px;border:1px solid rgba(240,214,166,.42);border-radius:50%;
+    display:grid;place-items:center;color:#18110a;background:linear-gradient(135deg,#f2d9a9,#b78349);cursor:pointer;
+    box-shadow:0 14px 40px rgba(0,0,0,.38),0 0 0 7px rgba(201,165,108,.08);transition:transform .25s,box-shadow .25s;
+  }
+  .floating-wa:hover{transform:translateY(-5px) scale(1.04);box-shadow:0 20px 54px rgba(0,0,0,.46),0 0 0 10px rgba(201,165,108,.1);}
+  .floating-wa svg{width:25px;height:25px;}
+  .floating-wa span{position:absolute;right:70px;width:max-content;padding:9px 13px;border:1px solid var(--line);border-radius:8px;background:rgba(13,13,15,.92);color:var(--cream);font-size:.68rem;letter-spacing:.04em;opacity:0;transform:translateX(8px);pointer-events:none;transition:.25s;}
+  .floating-wa:hover span{opacity:1;transform:none;}
+
+  .reveal{opacity:0;filter:blur(7px);clip-path:inset(0 0 14% 0);transition:opacity .8s ease,filter .8s ease,clip-path .9s cubic-bezier(.22,1,.36,1);transition-delay:var(--reveal-delay,0ms);}
+  .reveal.is-visible{opacity:1;filter:blur(0);clip-path:inset(0);}
+
+  @media(max-width:980px){
+    .cursor-aura{display:none;}
+    .prestige-inner{grid-template-columns:repeat(2,1fr);}
+    .prestige-item:nth-child(3){border-left:0;border-top:1px solid var(--line);}
+    .prestige-item:nth-child(4){border-top:1px solid var(--line);}
+    .experience-grid{grid-template-columns:1fr;gap:55px;}
+    .experience-intro{max-width:650px;}
+    .hero-proof{left:34px;bottom:26px;}
+    .hero-signature{right:34px;bottom:32px;}
+  }
+  @media(max-width:640px){
+    .eyebrow{gap:8px;}.eyebrow::before{width:18px;}
+    .hero-copy::before{font-size:11rem;}
+    .hero-proof{left:24px;bottom:22px;width:158px;padding:14px 16px;}
+    .hero-proof strong{font-size:1.65rem;}.hero-proof span{font-size:.54rem;}
+    .hero-signature{display:none;}
+    .prestige-inner{grid-template-columns:1fr 1fr;}
+    .prestige-item{min-height:86px;padding:16px 12px;gap:9px;justify-content:flex-start;}
+    .prestige-icon{width:29px;height:29px;flex-basis:29px;}
+    .prestige-item strong{font-size:.75rem;}.prestige-item span{font-size:.49rem;}
+    .experience{padding:84px 0;}
+    .experience-intro h2{font-size:3.35rem;}
+    .journey-step{grid-template-columns:52px 1fr;gap:15px;padding:24px 0;}
+    .journey-number{width:42px;height:42px;}
+    .floating-wa{width:52px;height:52px;right:16px;bottom:16px;}
+    .floating-wa span{display:none;}
+    .about-copy::after{display:none;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .loc-map::after{animation:none;}
+    .reveal{opacity:1;filter:none;clip-path:none;transition:none;}
+  }
 </style>
 </head>
 <body>
+
+<div class="cursor-aura" aria-hidden="true"></div>
 
 <header>
   <div class="header-inner">
@@ -750,10 +933,24 @@
       <div class="hero-photo-frame">
         <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&amp;fit=crop&amp;w=1400&amp;q=88" alt="Atendimento estético facial em ambiente clínico" fetchpriority="high">
       </div>
+      <div class="hero-proof">
+        <strong>+800</strong>
+        <span>atendimentos com cuidado individualizado</span>
+      </div>
+      <div class="hero-signature">Ariane Trevisan<small>Biomédica Esteta</small></div>
       <div class="hero-side-text">CIÊNCIA · ESTÉTICA · RESULTADOS</div>
     </div>
   </div>
 </section>
+
+<div class="prestige-strip" aria-label="Destaques do atendimento">
+  <div class="prestige-inner">
+    <div class="prestige-item"><span class="prestige-icon">01</span><div><strong>Avaliação detalhada</strong><span>Protocolo sob medida</span></div></div>
+    <div class="prestige-item"><span class="prestige-icon">02</span><div><strong>Naturalidade</strong><span>Resultados equilibrados</span></div></div>
+    <div class="prestige-item"><span class="prestige-icon">03</span><div><strong>Ciência e técnica</strong><span>Estética avançada</span></div></div>
+    <div class="prestige-item"><span class="prestige-icon">04</span><div><strong>Cuidado contínuo</strong><span>Do início ao pós</span></div></div>
+  </div>
+</div>
 
 <section class="about" id="sobre">
   <div class="about-grid">
@@ -901,6 +1098,30 @@
   </div>
 </section>
 
+<section class="experience" id="experiencia">
+  <div class="wrap experience-grid">
+    <div class="experience-intro">
+      <span class="eyebrow">Experiência exclusiva</span>
+      <h2>Seu cuidado em <em>cada etapa.</em></h2>
+      <p>Uma jornada pensada para que você se sinta segura, acolhida e confiante — da primeira conversa ao acompanhamento do resultado.</p>
+    </div>
+    <div class="journey">
+      <div class="journey-step">
+        <span class="journey-number">01</span>
+        <div><h3>Escuta e avaliação</h3><p>Entendemos suas expectativas, rotina e características para construir uma indicação verdadeiramente individual.</p></div>
+      </div>
+      <div class="journey-step">
+        <span class="journey-number">02</span>
+        <div><h3>Plano personalizado</h3><p>Cada escolha é explicada com clareza, priorizando equilíbrio, segurança e resultados que preservam sua identidade.</p></div>
+      </div>
+      <div class="journey-step">
+        <span class="journey-number">03</span>
+        <div><h3>Cuidado e acompanhamento</h3><p>O atendimento continua após o procedimento, com orientações e acompanhamento atento da sua evolução.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="faq" id="faq">
   <div class="wrap">
     <div class="section-head">
@@ -999,6 +1220,11 @@
     <div class="footer-right">Cuidar de você é a nossa especialidade.</div>
   </div>
 </footer>
+
+<button class="floating-wa js-open-modal" aria-label="Agendar avaliação pelo WhatsApp">
+  <span>Agendar avaliação</span>
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.38a9.9 9.9 0 0 0 4.7 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Z"/></svg>
+</button>
 
 <!-- ---------- MODAL DE AGENDAMENTO ---------- -->
 <div class="modal-overlay" id="modalOverlay">
@@ -1238,6 +1464,55 @@
   });
   window.addEventListener('load', measureParallax);
   measureParallax();
+
+  // Entrada editorial dos elementos conforme aparecem na tela
+  var revealTargets = document.querySelectorAll('.section-head, .dif-card, .card, .ad-card, .journey-step, .faq-item, .loc-row, .cta-band');
+  if(!reduceMotion.matches && 'IntersectionObserver' in window){
+    revealTargets.forEach(function(element, index){
+      element.classList.add('reveal');
+      element.style.setProperty('--reveal-delay', ((index % 4) * 80) + 'ms');
+    });
+    var revealObserver = new IntersectionObserver(function(entries, observer){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold:0.12, rootMargin:'0px 0px -45px' });
+    revealTargets.forEach(function(element){ revealObserver.observe(element); });
+  }
+
+  // Aura sutil no ponteiro e indicador de progresso da página
+  var cursorAura = document.querySelector('.cursor-aura');
+  if(cursorAura && window.matchMedia('(pointer:fine)').matches){
+    window.addEventListener('pointermove', function(event){
+      cursorAura.style.left = event.clientX + 'px';
+      cursorAura.style.top = event.clientY + 'px';
+    }, { passive:true });
+  }
+  function updateScrollProgress(){
+    var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = scrollable > 0 ? (window.pageYOffset / scrollable) * 100 : 0;
+    document.documentElement.style.setProperty('--scroll-progress', Math.min(100, progress).toFixed(2) + '%');
+  }
+  window.addEventListener('scroll', updateScrollProgress, { passive:true });
+  updateScrollProgress();
+
+  // Destaque automático da seção atual no menu principal
+  var desktopNavLinks = document.querySelectorAll('nav a[href^="#"]');
+  var observedSections = document.querySelectorAll('section[id]');
+  if('IntersectionObserver' in window){
+    var sectionObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        desktopNavLinks.forEach(function(link){
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      });
+    }, { rootMargin:'-28% 0px -62%', threshold:0 });
+    observedSections.forEach(function(section){ sectionObserver.observe(section); });
+  }
 
   // Rolagem suave para todos os links internos (#âncoras)
   var HEADER_OFFSET = 88;
